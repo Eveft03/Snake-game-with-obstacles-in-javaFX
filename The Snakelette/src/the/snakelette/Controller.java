@@ -2,8 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML2.java to edit this template
  */
-package the.snakelette;;
-
+package the.snakelette;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -108,6 +107,8 @@ public class Controller implements Initializable {
         snakeTail_1.setFill(Color.GREEN);
 
         borderPane.getChildren().addAll(snakeHead, snakeTail_1);
+        anchorPane.requestFocus();
+        borderPane.requestFocus();
         
         //Dirrection and Food
         direction = Direction.RIGHT;
@@ -155,6 +156,10 @@ public class Controller implements Initializable {
         
         food = new Food(-50,-50,borderPane,snakeSize,obstacles);
         obstacle = new Obstacle(-50, -50,  borderPane, snakeSize);
+        anchorPane.setFocusTraversable(true);
+        anchorPane.setOnKeyPressed(this::moveSquareKeyPressed);
+        borderPane.setFocusTraversable(true);
+        borderPane.setOnKeyPressed(this::moveSquareKeyPressed);
         start();
     }
 
